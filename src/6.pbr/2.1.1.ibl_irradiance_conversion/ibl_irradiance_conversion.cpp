@@ -184,6 +184,7 @@ int main()
     glBindTexture(GL_TEXTURE_2D, hdrTexture);
 
     glViewport(0, 0, 512, 512); // don't forget to configure the viewport to the capture dimensions.
+	//画到captureFBO这个 framebuffer上
     glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
     for (unsigned int i = 0; i < 6; ++i)
     {
@@ -264,6 +265,7 @@ int main()
         {
             glm::vec3 newPos = lightPositions[i] + glm::vec3(sin(glfwGetTime() * 5.0) * 5.0, 0.0, 0.0);
             newPos = lightPositions[i];
+			//一个一个的设置灯光的位置
             pbrShader.setVec3("lightPositions[" + std::to_string(i) + "]", newPos);
             pbrShader.setVec3("lightColors[" + std::to_string(i) + "]", lightColors[i]);
 
